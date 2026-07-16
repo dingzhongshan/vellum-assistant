@@ -725,6 +725,9 @@ describe("command-registry", () => {
       "chgrp",
       "chmod",
       "chown",
+      // Runtime — bun direct script execution (subcommands like install/test
+      // have their own specs without sandboxAutoApprove)
+      "bun",
       // Archives
       "tar",
       "zip",
@@ -785,7 +788,8 @@ describe("command-registry", () => {
         "npx",
         "yarn",
         "pnpm",
-        "bun",
+        // bun excluded: direct script execution (bun script.ts) is
+        // sandboxAutoApprove; subcommands (install/test/run) are not
         "pip",
         "pip3",
         "brew",
